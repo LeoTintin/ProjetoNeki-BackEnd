@@ -1,7 +1,7 @@
 package com.ProjetoNeki.dto;
-import com.SeletivoNeki.model.Skill;
-import com.SeletivoNeki.model.Usuario;
-import com.SeletivoNeki.model.UsuarioSkill;
+import com.ProjetoNeki.model.Skill;
+import com.ProjetoNeki.model.Usuario;
+import com.ProjetoNeki.model.UsuarioSkill;
 
 public class UsuarioSkillDto {
 

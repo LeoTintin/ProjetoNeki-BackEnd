@@ -1,8 +1,8 @@
 package com.ProjetoNeki.controller;
 
-import com.SeletivoNeki.dto.SkillDto;
-import com.SeletivoNeki.repository.SkillRepository;
-import com.SeletivoNeki.service.SkillService;
+import com.ProjetoNeki.dto.SkillDto;
+import com.ProjetoNeki.repository.SkillRepository;
+import com.ProjetoNeki.service.SkillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
