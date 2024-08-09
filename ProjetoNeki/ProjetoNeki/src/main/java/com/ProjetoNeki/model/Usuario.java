@@ -13,10 +13,10 @@ public class Usuario {
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String login;
+    private String Username;
 
     @Column(nullable = false)
-    private String senha;
+    private String Password;
 
     @OneToMany(mappedBy = "usuario")
     private List<UsuarioSkill> usuarioSkills;
@@ -24,10 +24,10 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(Long id, String login, String senha) {
+    public Usuario(Long id, String Username, String Password) {
         this.id = id;
-        this.login = login;
-        this.senha = senha;
+        this.Username = Username;
+        this.Password = Password;
     }
 
     public Long getId() {
@@ -38,19 +38,19 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getLogin() {
-        return login;
+    public String getUsername() {
+        return Username;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
+    public void setUsername(String Username) {
+        this.Username = Username;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getPassword() {
+        return Password;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
+    public void setPassword(String Password) {
+        this.Password = Password;
     }
 }
