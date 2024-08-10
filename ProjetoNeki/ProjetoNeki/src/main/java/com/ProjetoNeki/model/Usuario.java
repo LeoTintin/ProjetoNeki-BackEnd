@@ -1,56 +1,82 @@
 package com.ProjetoNeki.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.Collection;
 import java.util.List;
 
 @Entity
 @Table(name = "Usuarios")
-public class Usuario {
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(of = "id")
+public class Usuario implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true, nullable = false)
-    private String Username;
+    private String login;
 
     @Column(nullable = false)
-    private String Password;
+    private String senha;
+
+    @Column(nullable = false, name = "role")
+    private UsuarioRole role;
 
     @OneToMany(mappedBy = "usuario")
     private List<UsuarioSkill> usuarioSkills;
 
-    public Usuario() {
+    public Usuario(String login, String senha, UsuarioRole role){
+        this.login = login;
+        this.senha = senha;
+        this.role = role;
+
     }
 
-    public Usuario(Long id, String Username, String Password) {
-        this.id = id;
-        this.Username = Username;
-        this.Password = Password;
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        if(this.role == UsuarioRole.ADMIN) return List.of(new SimpleGrantedAuthority("ROLE_ADMIN"), new SimpleGrantedAuthority("ROLE_USER"));
+        else return List.of(new SimpleGrantedAuthority("ROLE_USER"));
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return Username;
-    }
-
-    public void setUsername(String Username) {
-        this.Username = Username;
-    }
-
+    @Override
     public String getPassword() {
-        return Password;
+        return senha;
     }
 
-    public void setPassword(String Password) {
-        this.Password = Password;
+    @Override
+    public String getUsername() {
+        return login;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 }

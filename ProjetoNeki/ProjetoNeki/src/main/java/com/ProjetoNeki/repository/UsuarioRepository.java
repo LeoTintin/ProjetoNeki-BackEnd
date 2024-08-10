@@ -1,9 +1,11 @@
 package com.ProjetoNeki.repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.ProjetoNeki.model.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
-    Usuario findByUsername(String username);
-    boolean existsByUsuarioname(String username);
+    UserDetails findByLogin(String login);
 }

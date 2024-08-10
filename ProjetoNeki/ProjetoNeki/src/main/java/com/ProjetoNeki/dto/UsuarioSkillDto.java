@@ -1,4 +1,6 @@
+
 package com.ProjetoNeki.dto;
+
 import com.ProjetoNeki.model.Skill;
 import com.ProjetoNeki.model.Usuario;
 import com.ProjetoNeki.model.UsuarioSkill;

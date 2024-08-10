@@ -1,4 +1,3 @@
-
 package com.ProjetoNeki.dto;
 
 import com.ProjetoNeki.model.Skill;
