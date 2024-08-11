@@ -1,36 +1,22 @@
-package com.ProjetoNeki.model;
+package com.ProjetoNeki.dto;
 
-import jakarta.persistence.*;
+import com.ProjetoNeki.model.Skill;
+import com.ProjetoNeki.model.UsuarioSkill;
 
-import java.util.List;
+public class UsuarioSkillResponseDto {
 
-@Entity
-@Table(name = "Skills")
-public class Skill {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false)
     private String nome;
-
     private String descricao;
-
-    @Column(name = "imagem_url")
     private String imagemUrl;
+    private String level;
 
-    @OneToMany(mappedBy = "skill")
-    private List<UsuarioSkill> usuarioSkills;
-
-    public Skill() {
-    }
-
-    public Skill(Long id, String nome, String descricao, String imagemUrl) {
-        this.id = id;
-        this.nome = nome;
-        this.descricao = descricao;
-        this.imagemUrl = imagemUrl;
+    public UsuarioSkillResponseDto(UsuarioSkill usuarioSkill) {
+        this.id = usuarioSkill.getSkill().getId();
+        this.nome = usuarioSkill.getSkill().getNome();
+        this.descricao = usuarioSkill.getSkill().getDescricao();
+        this.imagemUrl = usuarioSkill.getSkill().getImagemUrl();
+        this.level = usuarioSkill.getLevel().getLevelName();
     }
 
     public Long getId() {
@@ -63,5 +49,13 @@ public class Skill {
 
     public void setImagemUrl(String imagemUrl) {
         this.imagemUrl = imagemUrl;
+    }
+
+    public String getLevel() {
+        return level;
+    }
+
+    public void setLevel(String level) {
+        this.level = level;
     }
 }
