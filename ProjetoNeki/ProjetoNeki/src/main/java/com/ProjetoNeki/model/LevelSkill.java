@@ -2,8 +2,8 @@ package com.ProjetoNeki.model;
 
 public enum LevelSkill {
     INICIANTE("INICIANTE"),
-    INTERMEDIARIO("INTERMEDIÁRIO"),
-    AVANCADO("AVANÇADO");
+    INTERMEDIARIO("INTERMEDIARIO"),
+    AVANCADO("AVANCADO");
 
     private final String level;
 
