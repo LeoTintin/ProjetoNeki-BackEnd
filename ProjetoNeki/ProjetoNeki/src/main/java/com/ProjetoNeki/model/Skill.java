@@ -1,3 +1,4 @@
+
 package com.ProjetoNeki.model;
 
 import jakarta.persistence.*;

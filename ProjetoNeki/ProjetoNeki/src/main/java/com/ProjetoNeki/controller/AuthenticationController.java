@@ -6,6 +6,7 @@ import com.ProjetoNeki.dto.RegisterDto;
 import com.ProjetoNeki.model.Usuario;
 import com.ProjetoNeki.repository.UsuarioRepository;
 import com.ProjetoNeki.service.TokenService;
+import io.swagger.v3.oas.annotations.Operation;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,6 +32,7 @@ public class AuthenticationController {
     @Autowired
     private TokenService tokenService;
 
+    @Operation(summary = "login.")
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid AuthenticationDto data){
         var usernamePassword = new UsernamePasswordAuthenticationToken(data.login(), data.password());
@@ -41,6 +43,7 @@ public class AuthenticationController {
         return ResponseEntity.ok(new LoginResponseDto(token));
     }
 
+    @Operation(summary = "SingUp")
     @PostMapping("/cadastro")
     public ResponseEntity register(@RequestBody @Valid RegisterDto data) {
         if(this.repository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();

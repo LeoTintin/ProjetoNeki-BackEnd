@@ -1,6 +1,6 @@
 package com.ProjetoNeki.dto;
 
-import com.ProjetoNeki.model.LevelSkill;
+import com.ProjetoNeki.Enum.LevelSkill;
 
 public class UsuarioSkillRequestDto {
 

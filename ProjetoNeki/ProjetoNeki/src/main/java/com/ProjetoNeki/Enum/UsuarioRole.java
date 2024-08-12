@@ -1,4 +1,4 @@
-package com.ProjetoNeki.model;
+package com.ProjetoNeki.Enum;
 
 public enum UsuarioRole {
 
