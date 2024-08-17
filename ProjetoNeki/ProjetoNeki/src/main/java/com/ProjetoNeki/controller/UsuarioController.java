@@ -1,4 +1,4 @@
-package com.SeletivoNeki.controller;
+package com.ProjetoNeki.controller;
 
 import com.ProjetoNeki.dto.UsuarioSkillRequestDto;
 import com.ProjetoNeki.dto.UsuarioSkillResponseDto;
